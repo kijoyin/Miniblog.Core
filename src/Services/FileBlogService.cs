@@ -3,7 +3,8 @@ namespace Miniblog.Core.Services
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
 
-    using Miniblog.Core.Models;
+    using Miniblog.Brains.Models;
+    using Miniblog.Brains.Services;
 
     using System;
     using System.Collections.Generic;

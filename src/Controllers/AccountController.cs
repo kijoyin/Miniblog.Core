@@ -5,7 +5,8 @@ namespace Miniblog.Core.Controllers
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    using Miniblog.Core.Models;
+    using Miniblog.Brains.Models;
+    using Miniblog.Brains.Services;
     using Miniblog.Core.Services;
 
     using System.Diagnostics.CodeAnalysis;
