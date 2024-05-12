@@ -249,7 +249,7 @@ namespace Miniblog.Core.Controllers
             existing.Content = post.Content.Trim();
             existing.Excerpt = post.Excerpt.Trim();
 
-            await this.SaveFilesToDisk(existing).ConfigureAwait(false);
+            //await this.SaveFilesToDisk(existing).ConfigureAwait(false);
 
             await this.blog.SavePost(existing).ConfigureAwait(false);
 

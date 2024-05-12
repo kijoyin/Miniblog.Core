@@ -105,11 +105,11 @@ namespace Miniblog.Core
             services.AddRazorPages();
 
             services.AddSingleton<IUserServices, BlogUserServices>();
-            services.AddSingleton<IBlogService, FileBlogService>();
+            services.AddScoped<IBlogService, PresistantBlogService>();
             services.Configure<BlogSettings>(this.Configuration.GetSection("blog"));
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMetaWeblog<MetaWeblogService>();
-            services.AddDbContext<BloggingContext>(options =>
+            services.AddDbContext<IBloggingContext,BloggingContext>(options =>
                                                         options.UseNpgsql(Configuration.GetConnectionString("PostgresConnection"), b => b.MigrationsAssembly("Miniblog.Core")).UseLowerCaseNamingConvention());
             // Progressive Web Apps https://github.com/madskristensen/WebEssentials.AspNetCore.ServiceWorker
             services.AddProgressiveWebApp(
