@@ -24,6 +24,9 @@ namespace Miniblog.Core
     using MetaWeblogService = Services.MetaWeblogService;
     using WmmNullLogger = WebMarkupMin.Core.Loggers.NullLogger;
     using Miniblog.Brains.Services;
+    using System;
+    using Miniblog.Infrastructure;
+    using Microsoft.EntityFrameworkCore;
 
     public class Startup
     {
@@ -106,7 +109,8 @@ namespace Miniblog.Core
             services.Configure<BlogSettings>(this.Configuration.GetSection("blog"));
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddMetaWeblog<MetaWeblogService>();
-
+            services.AddDbContext<BloggingContext>(options =>
+                                                        options.UseNpgsql(Configuration.GetConnectionString("PostgresConnection"), b => b.MigrationsAssembly("Miniblog.Core")).UseLowerCaseNamingConvention());
             // Progressive Web Apps https://github.com/madskristensen/WebEssentials.AspNetCore.ServiceWorker
             services.AddProgressiveWebApp(
                 new WebEssentials.AspNetCore.Pwa.PwaOptions
