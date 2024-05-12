@@ -28,9 +28,9 @@ namespace Miniblog.Brains.Models.Dto
         [Required]
         public string Title { get; set; } = string.Empty;
 
-        public IList<string> Categories { get; } = new List<string>();
+        public string Categories { get; set; } = string.Empty;
 
-        public IList<string> Tags { get; } = new List<string>();
+        public string Tags { get; set; } = string.Empty;
 
         public IList<CommentDto> Comments { get; } = new List<CommentDto>();
 
