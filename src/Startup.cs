@@ -23,6 +23,7 @@ namespace Miniblog.Core
     using IWmmLogger = WebMarkupMin.Core.Loggers.ILogger;
     using MetaWeblogService = Services.MetaWeblogService;
     using WmmNullLogger = WebMarkupMin.Core.Loggers.NullLogger;
+    using Miniblog.Brains.Services;
 
     public class Startup
     {

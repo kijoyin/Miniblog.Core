@@ -1,4 +1,4 @@
-namespace Miniblog.Core.Models.Dto
+namespace Miniblog.Brains.Models.Dto
 {
     using System.ComponentModel.DataAnnotations;
     using System.Globalization;

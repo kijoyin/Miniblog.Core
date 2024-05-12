@@ -1,6 +1,6 @@
-namespace Miniblog.Core.Services
+namespace Miniblog.Brains.Services
 {
-    using Miniblog.Core.Models;
+    using Miniblog.Brains.Models;
 
     using System.Collections.Generic;
     using System.Threading.Tasks;

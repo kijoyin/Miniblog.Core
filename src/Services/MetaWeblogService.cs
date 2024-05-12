@@ -4,6 +4,8 @@ namespace Miniblog.Core.Services
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
 
+    using Miniblog.Brains.Services;
+
     using System;
     using System.Linq;
     using System.Security.Claims;
@@ -56,10 +58,10 @@ namespace Miniblog.Core.Services
                 throw new ArgumentNullException(nameof(post));
             }
 
-            var newPost = new Models.Post
+            var newPost = new Brains.Models.Post
             {
                 Title = post.title,
-                Slug = !string.IsNullOrWhiteSpace(post.wp_slug) ? post.wp_slug : Models.Post.CreateSlug(post.title),
+                Slug = !string.IsNullOrWhiteSpace(post.wp_slug) ? post.wp_slug : Brains.Models.Post.CreateSlug(post.title),
                 Excerpt = post.mt_excerpt,
                 Content = post.description,
                 IsPublished = publish
@@ -234,7 +236,7 @@ namespace Miniblog.Core.Services
             return new MediaObjectInfo { url = path };
         }
 
-        private Post ToMetaWebLogPost(Models.Post post)
+        private Post ToMetaWebLogPost(Brains.Models.Post post)
         {
             var request = this.context.HttpContext!.Request;
             var url = $"{request.Scheme}://{request.Host}";
