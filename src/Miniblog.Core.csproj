@@ -7,6 +7,7 @@
     <RepositoryType>git</RepositoryType>
     <UserSecretsId>db0ad638-1e4e-4d1d-9f3c-e6ae6a1dee71</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <ItemGroup>
