@@ -7,6 +7,7 @@ namespace Miniblog.Core.Controllers
     using Microsoft.SyndicationFeed.Atom;
     using Microsoft.SyndicationFeed.Rss;
 
+    using Miniblog.Brains.Services;
     using Miniblog.Core.Services;
 
     using System;

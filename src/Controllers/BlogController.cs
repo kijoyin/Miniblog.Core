@@ -4,7 +4,8 @@ namespace Miniblog.Core.Controllers
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
 
-    using Miniblog.Core.Models;
+    using Miniblog.Brains.Models;
+    using Miniblog.Brains.Services;
     using Miniblog.Core.Services;
 
     using System;
@@ -227,7 +228,7 @@ namespace Miniblog.Core.Controllers
             if (existingPostWithSameSlug != null && existingPostWithSameSlug.ID != post.ID)
             {
 
-                existing.Slug = Models.Post.CreateSlug(post.Title + DateTime.UtcNow.ToString("yyyyMMddHHmm"));
+                existing.Slug = Brains.Models.Post.CreateSlug(post.Title + DateTime.UtcNow.ToString("yyyyMMddHHmm"));
             }
             string categories = this.Request.Form[Constants.categories]!;
             string tags = this.Request.Form[Constants.tags]!;
@@ -243,12 +244,12 @@ namespace Miniblog.Core.Controllers
                 .ToList()
                 .ForEach(existing.Tags.Add);
             existing.Title = post.Title.Trim();
-            existing.Slug = !string.IsNullOrWhiteSpace(post.Slug) ? post.Slug.Trim() : Models.Post.CreateSlug(post.Title);
+            existing.Slug = !string.IsNullOrWhiteSpace(post.Slug) ? post.Slug.Trim() : Brains.Models.Post.CreateSlug(post.Title);
             existing.IsPublished = post.IsPublished;
             existing.Content = post.Content.Trim();
             existing.Excerpt = post.Excerpt.Trim();
 
-            await this.SaveFilesToDisk(existing).ConfigureAwait(false);
+            //await this.SaveFilesToDisk(existing).ConfigureAwait(false);
 
             await this.blog.SavePost(existing).ConfigureAwait(false);
 
